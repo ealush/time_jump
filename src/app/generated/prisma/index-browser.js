@@ -120,14 +120,9 @@ exports.Prisma.JumpRequestScalarFieldEnum = {
   destinationYear: 'destinationYear',
   plutoniumCores: 'plutoniumCores',
   suppressParadoxCheck: 'suppressParadoxCheck',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.CrewMemberScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  birthYear: 'birthYear',
-  jumpRequestId: 'jumpRequestId'
+  createdAt: 'createdAt',
+  travelerName: 'travelerName',
+  travelerBirthYear: 'travelerBirthYear'
 };
 
 exports.Prisma.SortOrder = {
@@ -137,8 +132,7 @@ exports.Prisma.SortOrder = {
 
 
 exports.Prisma.ModelName = {
-  JumpRequest: 'JumpRequest',
-  CrewMember: 'CrewMember'
+  JumpRequest: 'JumpRequest'
 };
 
 /**

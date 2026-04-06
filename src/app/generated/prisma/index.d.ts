@@ -18,11 +18,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type JumpRequest = $Result.DefaultSelection<Prisma.$JumpRequestPayload>
-/**
- * Model CrewMember
- * 
- */
-export type CrewMember = $Result.DefaultSelection<Prisma.$CrewMemberPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -158,16 +153,6 @@ export class PrismaClient<
     * ```
     */
   get jumpRequest(): Prisma.JumpRequestDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.crewMember`: Exposes CRUD operations for the **CrewMember** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more CrewMembers
-    * const crewMembers = await prisma.crewMember.findMany()
-    * ```
-    */
-  get crewMember(): Prisma.CrewMemberDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -608,8 +593,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    JumpRequest: 'JumpRequest',
-    CrewMember: 'CrewMember'
+    JumpRequest: 'JumpRequest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -628,7 +612,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "jumpRequest" | "crewMember"
+      modelProps: "jumpRequest"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -703,80 +687,6 @@ export namespace Prisma {
           count: {
             args: Prisma.JumpRequestCountArgs<ExtArgs>
             result: $Utils.Optional<JumpRequestCountAggregateOutputType> | number
-          }
-        }
-      }
-      CrewMember: {
-        payload: Prisma.$CrewMemberPayload<ExtArgs>
-        fields: Prisma.CrewMemberFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.CrewMemberFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.CrewMemberFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload>
-          }
-          findFirst: {
-            args: Prisma.CrewMemberFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.CrewMemberFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload>
-          }
-          findMany: {
-            args: Prisma.CrewMemberFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload>[]
-          }
-          create: {
-            args: Prisma.CrewMemberCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload>
-          }
-          createMany: {
-            args: Prisma.CrewMemberCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.CrewMemberCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload>[]
-          }
-          delete: {
-            args: Prisma.CrewMemberDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload>
-          }
-          update: {
-            args: Prisma.CrewMemberUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload>
-          }
-          deleteMany: {
-            args: Prisma.CrewMemberDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.CrewMemberUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.CrewMemberUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload>[]
-          }
-          upsert: {
-            args: Prisma.CrewMemberUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CrewMemberPayload>
-          }
-          aggregate: {
-            args: Prisma.CrewMemberAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCrewMember>
-          }
-          groupBy: {
-            args: Prisma.CrewMemberGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CrewMemberGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.CrewMemberCountArgs<ExtArgs>
-            result: $Utils.Optional<CrewMemberCountAggregateOutputType> | number
           }
         }
       }
@@ -865,7 +775,6 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     jumpRequest?: JumpRequestOmit
-    crewMember?: CrewMemberOmit
   }
 
   /* Types for Logging */
@@ -955,36 +864,6 @@ export namespace Prisma {
    */
 
 
-  /**
-   * Count Type JumpRequestCountOutputType
-   */
-
-  export type JumpRequestCountOutputType = {
-    crew: number
-  }
-
-  export type JumpRequestCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    crew?: boolean | JumpRequestCountOutputTypeCountCrewArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * JumpRequestCountOutputType without action
-   */
-  export type JumpRequestCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the JumpRequestCountOutputType
-     */
-    select?: JumpRequestCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * JumpRequestCountOutputType without action
-   */
-  export type JumpRequestCountOutputTypeCountCrewArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CrewMemberWhereInput
-  }
-
 
   /**
    * Models
@@ -1005,11 +884,13 @@ export namespace Prisma {
   export type JumpRequestAvgAggregateOutputType = {
     destinationYear: number | null
     plutoniumCores: number | null
+    travelerBirthYear: number | null
   }
 
   export type JumpRequestSumAggregateOutputType = {
     destinationYear: number | null
     plutoniumCores: number | null
+    travelerBirthYear: number | null
   }
 
   export type JumpRequestMinAggregateOutputType = {
@@ -1019,6 +900,8 @@ export namespace Prisma {
     plutoniumCores: number | null
     suppressParadoxCheck: boolean | null
     createdAt: Date | null
+    travelerName: string | null
+    travelerBirthYear: number | null
   }
 
   export type JumpRequestMaxAggregateOutputType = {
@@ -1028,6 +911,8 @@ export namespace Prisma {
     plutoniumCores: number | null
     suppressParadoxCheck: boolean | null
     createdAt: Date | null
+    travelerName: string | null
+    travelerBirthYear: number | null
   }
 
   export type JumpRequestCountAggregateOutputType = {
@@ -1037,6 +922,8 @@ export namespace Prisma {
     plutoniumCores: number
     suppressParadoxCheck: number
     createdAt: number
+    travelerName: number
+    travelerBirthYear: number
     _all: number
   }
 
@@ -1044,11 +931,13 @@ export namespace Prisma {
   export type JumpRequestAvgAggregateInputType = {
     destinationYear?: true
     plutoniumCores?: true
+    travelerBirthYear?: true
   }
 
   export type JumpRequestSumAggregateInputType = {
     destinationYear?: true
     plutoniumCores?: true
+    travelerBirthYear?: true
   }
 
   export type JumpRequestMinAggregateInputType = {
@@ -1058,6 +947,8 @@ export namespace Prisma {
     plutoniumCores?: true
     suppressParadoxCheck?: true
     createdAt?: true
+    travelerName?: true
+    travelerBirthYear?: true
   }
 
   export type JumpRequestMaxAggregateInputType = {
@@ -1067,6 +958,8 @@ export namespace Prisma {
     plutoniumCores?: true
     suppressParadoxCheck?: true
     createdAt?: true
+    travelerName?: true
+    travelerBirthYear?: true
   }
 
   export type JumpRequestCountAggregateInputType = {
@@ -1076,6 +969,8 @@ export namespace Prisma {
     plutoniumCores?: true
     suppressParadoxCheck?: true
     createdAt?: true
+    travelerName?: true
+    travelerBirthYear?: true
     _all?: true
   }
 
@@ -1172,6 +1067,8 @@ export namespace Prisma {
     plutoniumCores: number
     suppressParadoxCheck: boolean
     createdAt: Date
+    travelerName: string
+    travelerBirthYear: number
     _count: JumpRequestCountAggregateOutputType | null
     _avg: JumpRequestAvgAggregateOutputType | null
     _sum: JumpRequestSumAggregateOutputType | null
@@ -1200,8 +1097,8 @@ export namespace Prisma {
     plutoniumCores?: boolean
     suppressParadoxCheck?: boolean
     createdAt?: boolean
-    crew?: boolean | JumpRequest$crewArgs<ExtArgs>
-    _count?: boolean | JumpRequestCountOutputTypeDefaultArgs<ExtArgs>
+    travelerName?: boolean
+    travelerBirthYear?: boolean
   }, ExtArgs["result"]["jumpRequest"]>
 
   export type JumpRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1211,6 +1108,8 @@ export namespace Prisma {
     plutoniumCores?: boolean
     suppressParadoxCheck?: boolean
     createdAt?: boolean
+    travelerName?: boolean
+    travelerBirthYear?: boolean
   }, ExtArgs["result"]["jumpRequest"]>
 
   export type JumpRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1220,6 +1119,8 @@ export namespace Prisma {
     plutoniumCores?: boolean
     suppressParadoxCheck?: boolean
     createdAt?: boolean
+    travelerName?: boolean
+    travelerBirthYear?: boolean
   }, ExtArgs["result"]["jumpRequest"]>
 
   export type JumpRequestSelectScalar = {
@@ -1229,21 +1130,15 @@ export namespace Prisma {
     plutoniumCores?: boolean
     suppressParadoxCheck?: boolean
     createdAt?: boolean
+    travelerName?: boolean
+    travelerBirthYear?: boolean
   }
 
-  export type JumpRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mission" | "destinationYear" | "plutoniumCores" | "suppressParadoxCheck" | "createdAt", ExtArgs["result"]["jumpRequest"]>
-  export type JumpRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    crew?: boolean | JumpRequest$crewArgs<ExtArgs>
-    _count?: boolean | JumpRequestCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type JumpRequestIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type JumpRequestIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type JumpRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mission" | "destinationYear" | "plutoniumCores" | "suppressParadoxCheck" | "createdAt" | "travelerName" | "travelerBirthYear", ExtArgs["result"]["jumpRequest"]>
 
   export type $JumpRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "JumpRequest"
-    objects: {
-      crew: Prisma.$CrewMemberPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       mission: string
@@ -1251,6 +1146,8 @@ export namespace Prisma {
       plutoniumCores: number
       suppressParadoxCheck: boolean
       createdAt: Date
+      travelerName: string
+      travelerBirthYear: number
     }, ExtArgs["result"]["jumpRequest"]>
     composites: {}
   }
@@ -1645,7 +1542,6 @@ export namespace Prisma {
    */
   export interface Prisma__JumpRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    crew<T extends JumpRequest$crewArgs<ExtArgs> = {}>(args?: Subset<T, JumpRequest$crewArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1681,6 +1577,8 @@ export namespace Prisma {
     readonly plutoniumCores: FieldRef<"JumpRequest", 'Int'>
     readonly suppressParadoxCheck: FieldRef<"JumpRequest", 'Boolean'>
     readonly createdAt: FieldRef<"JumpRequest", 'DateTime'>
+    readonly travelerName: FieldRef<"JumpRequest", 'String'>
+    readonly travelerBirthYear: FieldRef<"JumpRequest", 'Int'>
   }
     
 
@@ -1697,10 +1595,6 @@ export namespace Prisma {
      * Omit specific fields from the JumpRequest
      */
     omit?: JumpRequestOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
     /**
      * Filter, which JumpRequest to fetch.
      */
@@ -1720,10 +1614,6 @@ export namespace Prisma {
      */
     omit?: JumpRequestOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
-    /**
      * Filter, which JumpRequest to fetch.
      */
     where: JumpRequestWhereUniqueInput
@@ -1741,10 +1631,6 @@ export namespace Prisma {
      * Omit specific fields from the JumpRequest
      */
     omit?: JumpRequestOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
     /**
      * Filter, which JumpRequest to fetch.
      */
@@ -1794,10 +1680,6 @@ export namespace Prisma {
      */
     omit?: JumpRequestOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
-    /**
      * Filter, which JumpRequest to fetch.
      */
     where?: JumpRequestWhereInput
@@ -1846,10 +1728,6 @@ export namespace Prisma {
      */
     omit?: JumpRequestOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
-    /**
      * Filter, which JumpRequests to fetch.
      */
     where?: JumpRequestWhereInput
@@ -1892,10 +1770,6 @@ export namespace Prisma {
      * Omit specific fields from the JumpRequest
      */
     omit?: JumpRequestOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
     /**
      * The data needed to create a JumpRequest.
      */
@@ -1942,10 +1816,6 @@ export namespace Prisma {
      * Omit specific fields from the JumpRequest
      */
     omit?: JumpRequestOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
     /**
      * The data needed to update a JumpRequest.
      */
@@ -2013,10 +1883,6 @@ export namespace Prisma {
      */
     omit?: JumpRequestOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
-    /**
      * The filter to search for the JumpRequest to update in case it exists.
      */
     where: JumpRequestWhereUniqueInput
@@ -2043,10 +1909,6 @@ export namespace Prisma {
      */
     omit?: JumpRequestOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
-    /**
      * Filter which JumpRequest to delete.
      */
     where: JumpRequestWhereUniqueInput
@@ -2067,30 +1929,6 @@ export namespace Prisma {
   }
 
   /**
-   * JumpRequest.crew
-   */
-  export type JumpRequest$crewArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    where?: CrewMemberWhereInput
-    orderBy?: CrewMemberOrderByWithRelationInput | CrewMemberOrderByWithRelationInput[]
-    cursor?: CrewMemberWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CrewMemberScalarFieldEnum | CrewMemberScalarFieldEnum[]
-  }
-
-  /**
    * JumpRequest without action
    */
   export type JumpRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2102,1087 +1940,6 @@ export namespace Prisma {
      * Omit specific fields from the JumpRequest
      */
     omit?: JumpRequestOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: JumpRequestInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model CrewMember
-   */
-
-  export type AggregateCrewMember = {
-    _count: CrewMemberCountAggregateOutputType | null
-    _avg: CrewMemberAvgAggregateOutputType | null
-    _sum: CrewMemberSumAggregateOutputType | null
-    _min: CrewMemberMinAggregateOutputType | null
-    _max: CrewMemberMaxAggregateOutputType | null
-  }
-
-  export type CrewMemberAvgAggregateOutputType = {
-    birthYear: number | null
-  }
-
-  export type CrewMemberSumAggregateOutputType = {
-    birthYear: number | null
-  }
-
-  export type CrewMemberMinAggregateOutputType = {
-    id: string | null
-    name: string | null
-    birthYear: number | null
-    jumpRequestId: string | null
-  }
-
-  export type CrewMemberMaxAggregateOutputType = {
-    id: string | null
-    name: string | null
-    birthYear: number | null
-    jumpRequestId: string | null
-  }
-
-  export type CrewMemberCountAggregateOutputType = {
-    id: number
-    name: number
-    birthYear: number
-    jumpRequestId: number
-    _all: number
-  }
-
-
-  export type CrewMemberAvgAggregateInputType = {
-    birthYear?: true
-  }
-
-  export type CrewMemberSumAggregateInputType = {
-    birthYear?: true
-  }
-
-  export type CrewMemberMinAggregateInputType = {
-    id?: true
-    name?: true
-    birthYear?: true
-    jumpRequestId?: true
-  }
-
-  export type CrewMemberMaxAggregateInputType = {
-    id?: true
-    name?: true
-    birthYear?: true
-    jumpRequestId?: true
-  }
-
-  export type CrewMemberCountAggregateInputType = {
-    id?: true
-    name?: true
-    birthYear?: true
-    jumpRequestId?: true
-    _all?: true
-  }
-
-  export type CrewMemberAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CrewMember to aggregate.
-     */
-    where?: CrewMemberWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CrewMembers to fetch.
-     */
-    orderBy?: CrewMemberOrderByWithRelationInput | CrewMemberOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: CrewMemberWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CrewMembers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CrewMembers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned CrewMembers
-    **/
-    _count?: true | CrewMemberCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: CrewMemberAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: CrewMemberSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: CrewMemberMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: CrewMemberMaxAggregateInputType
-  }
-
-  export type GetCrewMemberAggregateType<T extends CrewMemberAggregateArgs> = {
-        [P in keyof T & keyof AggregateCrewMember]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateCrewMember[P]>
-      : GetScalarType<T[P], AggregateCrewMember[P]>
-  }
-
-
-
-
-  export type CrewMemberGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CrewMemberWhereInput
-    orderBy?: CrewMemberOrderByWithAggregationInput | CrewMemberOrderByWithAggregationInput[]
-    by: CrewMemberScalarFieldEnum[] | CrewMemberScalarFieldEnum
-    having?: CrewMemberScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: CrewMemberCountAggregateInputType | true
-    _avg?: CrewMemberAvgAggregateInputType
-    _sum?: CrewMemberSumAggregateInputType
-    _min?: CrewMemberMinAggregateInputType
-    _max?: CrewMemberMaxAggregateInputType
-  }
-
-  export type CrewMemberGroupByOutputType = {
-    id: string
-    name: string
-    birthYear: number
-    jumpRequestId: string
-    _count: CrewMemberCountAggregateOutputType | null
-    _avg: CrewMemberAvgAggregateOutputType | null
-    _sum: CrewMemberSumAggregateOutputType | null
-    _min: CrewMemberMinAggregateOutputType | null
-    _max: CrewMemberMaxAggregateOutputType | null
-  }
-
-  type GetCrewMemberGroupByPayload<T extends CrewMemberGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<CrewMemberGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof CrewMemberGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CrewMemberGroupByOutputType[P]>
-            : GetScalarType<T[P], CrewMemberGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type CrewMemberSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    birthYear?: boolean
-    jumpRequestId?: boolean
-    jumpRequest?: boolean | JumpRequestDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["crewMember"]>
-
-  export type CrewMemberSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    birthYear?: boolean
-    jumpRequestId?: boolean
-    jumpRequest?: boolean | JumpRequestDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["crewMember"]>
-
-  export type CrewMemberSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    birthYear?: boolean
-    jumpRequestId?: boolean
-    jumpRequest?: boolean | JumpRequestDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["crewMember"]>
-
-  export type CrewMemberSelectScalar = {
-    id?: boolean
-    name?: boolean
-    birthYear?: boolean
-    jumpRequestId?: boolean
-  }
-
-  export type CrewMemberOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "birthYear" | "jumpRequestId", ExtArgs["result"]["crewMember"]>
-  export type CrewMemberInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    jumpRequest?: boolean | JumpRequestDefaultArgs<ExtArgs>
-  }
-  export type CrewMemberIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    jumpRequest?: boolean | JumpRequestDefaultArgs<ExtArgs>
-  }
-  export type CrewMemberIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    jumpRequest?: boolean | JumpRequestDefaultArgs<ExtArgs>
-  }
-
-  export type $CrewMemberPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "CrewMember"
-    objects: {
-      jumpRequest: Prisma.$JumpRequestPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      name: string
-      birthYear: number
-      jumpRequestId: string
-    }, ExtArgs["result"]["crewMember"]>
-    composites: {}
-  }
-
-  type CrewMemberGetPayload<S extends boolean | null | undefined | CrewMemberDefaultArgs> = $Result.GetResult<Prisma.$CrewMemberPayload, S>
-
-  type CrewMemberCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CrewMemberFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CrewMemberCountAggregateInputType | true
-    }
-
-  export interface CrewMemberDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CrewMember'], meta: { name: 'CrewMember' } }
-    /**
-     * Find zero or one CrewMember that matches the filter.
-     * @param {CrewMemberFindUniqueArgs} args - Arguments to find a CrewMember
-     * @example
-     * // Get one CrewMember
-     * const crewMember = await prisma.crewMember.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends CrewMemberFindUniqueArgs>(args: SelectSubset<T, CrewMemberFindUniqueArgs<ExtArgs>>): Prisma__CrewMemberClient<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one CrewMember that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {CrewMemberFindUniqueOrThrowArgs} args - Arguments to find a CrewMember
-     * @example
-     * // Get one CrewMember
-     * const crewMember = await prisma.crewMember.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends CrewMemberFindUniqueOrThrowArgs>(args: SelectSubset<T, CrewMemberFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CrewMemberClient<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CrewMember that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CrewMemberFindFirstArgs} args - Arguments to find a CrewMember
-     * @example
-     * // Get one CrewMember
-     * const crewMember = await prisma.crewMember.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends CrewMemberFindFirstArgs>(args?: SelectSubset<T, CrewMemberFindFirstArgs<ExtArgs>>): Prisma__CrewMemberClient<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first CrewMember that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CrewMemberFindFirstOrThrowArgs} args - Arguments to find a CrewMember
-     * @example
-     * // Get one CrewMember
-     * const crewMember = await prisma.crewMember.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends CrewMemberFindFirstOrThrowArgs>(args?: SelectSubset<T, CrewMemberFindFirstOrThrowArgs<ExtArgs>>): Prisma__CrewMemberClient<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more CrewMembers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CrewMemberFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all CrewMembers
-     * const crewMembers = await prisma.crewMember.findMany()
-     * 
-     * // Get first 10 CrewMembers
-     * const crewMembers = await prisma.crewMember.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const crewMemberWithIdOnly = await prisma.crewMember.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends CrewMemberFindManyArgs>(args?: SelectSubset<T, CrewMemberFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a CrewMember.
-     * @param {CrewMemberCreateArgs} args - Arguments to create a CrewMember.
-     * @example
-     * // Create one CrewMember
-     * const CrewMember = await prisma.crewMember.create({
-     *   data: {
-     *     // ... data to create a CrewMember
-     *   }
-     * })
-     * 
-     */
-    create<T extends CrewMemberCreateArgs>(args: SelectSubset<T, CrewMemberCreateArgs<ExtArgs>>): Prisma__CrewMemberClient<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many CrewMembers.
-     * @param {CrewMemberCreateManyArgs} args - Arguments to create many CrewMembers.
-     * @example
-     * // Create many CrewMembers
-     * const crewMember = await prisma.crewMember.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends CrewMemberCreateManyArgs>(args?: SelectSubset<T, CrewMemberCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many CrewMembers and returns the data saved in the database.
-     * @param {CrewMemberCreateManyAndReturnArgs} args - Arguments to create many CrewMembers.
-     * @example
-     * // Create many CrewMembers
-     * const crewMember = await prisma.crewMember.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many CrewMembers and only return the `id`
-     * const crewMemberWithIdOnly = await prisma.crewMember.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends CrewMemberCreateManyAndReturnArgs>(args?: SelectSubset<T, CrewMemberCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a CrewMember.
-     * @param {CrewMemberDeleteArgs} args - Arguments to delete one CrewMember.
-     * @example
-     * // Delete one CrewMember
-     * const CrewMember = await prisma.crewMember.delete({
-     *   where: {
-     *     // ... filter to delete one CrewMember
-     *   }
-     * })
-     * 
-     */
-    delete<T extends CrewMemberDeleteArgs>(args: SelectSubset<T, CrewMemberDeleteArgs<ExtArgs>>): Prisma__CrewMemberClient<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one CrewMember.
-     * @param {CrewMemberUpdateArgs} args - Arguments to update one CrewMember.
-     * @example
-     * // Update one CrewMember
-     * const crewMember = await prisma.crewMember.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends CrewMemberUpdateArgs>(args: SelectSubset<T, CrewMemberUpdateArgs<ExtArgs>>): Prisma__CrewMemberClient<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more CrewMembers.
-     * @param {CrewMemberDeleteManyArgs} args - Arguments to filter CrewMembers to delete.
-     * @example
-     * // Delete a few CrewMembers
-     * const { count } = await prisma.crewMember.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends CrewMemberDeleteManyArgs>(args?: SelectSubset<T, CrewMemberDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CrewMembers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CrewMemberUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many CrewMembers
-     * const crewMember = await prisma.crewMember.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends CrewMemberUpdateManyArgs>(args: SelectSubset<T, CrewMemberUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more CrewMembers and returns the data updated in the database.
-     * @param {CrewMemberUpdateManyAndReturnArgs} args - Arguments to update many CrewMembers.
-     * @example
-     * // Update many CrewMembers
-     * const crewMember = await prisma.crewMember.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more CrewMembers and only return the `id`
-     * const crewMemberWithIdOnly = await prisma.crewMember.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends CrewMemberUpdateManyAndReturnArgs>(args: SelectSubset<T, CrewMemberUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one CrewMember.
-     * @param {CrewMemberUpsertArgs} args - Arguments to update or create a CrewMember.
-     * @example
-     * // Update or create a CrewMember
-     * const crewMember = await prisma.crewMember.upsert({
-     *   create: {
-     *     // ... data to create a CrewMember
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the CrewMember we want to update
-     *   }
-     * })
-     */
-    upsert<T extends CrewMemberUpsertArgs>(args: SelectSubset<T, CrewMemberUpsertArgs<ExtArgs>>): Prisma__CrewMemberClient<$Result.GetResult<Prisma.$CrewMemberPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of CrewMembers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CrewMemberCountArgs} args - Arguments to filter CrewMembers to count.
-     * @example
-     * // Count the number of CrewMembers
-     * const count = await prisma.crewMember.count({
-     *   where: {
-     *     // ... the filter for the CrewMembers we want to count
-     *   }
-     * })
-    **/
-    count<T extends CrewMemberCountArgs>(
-      args?: Subset<T, CrewMemberCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], CrewMemberCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a CrewMember.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CrewMemberAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends CrewMemberAggregateArgs>(args: Subset<T, CrewMemberAggregateArgs>): Prisma.PrismaPromise<GetCrewMemberAggregateType<T>>
-
-    /**
-     * Group by CrewMember.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {CrewMemberGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends CrewMemberGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CrewMemberGroupByArgs['orderBy'] }
-        : { orderBy?: CrewMemberGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, CrewMemberGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCrewMemberGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the CrewMember model
-   */
-  readonly fields: CrewMemberFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for CrewMember.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__CrewMemberClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    jumpRequest<T extends JumpRequestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, JumpRequestDefaultArgs<ExtArgs>>): Prisma__JumpRequestClient<$Result.GetResult<Prisma.$JumpRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the CrewMember model
-   */
-  interface CrewMemberFieldRefs {
-    readonly id: FieldRef<"CrewMember", 'String'>
-    readonly name: FieldRef<"CrewMember", 'String'>
-    readonly birthYear: FieldRef<"CrewMember", 'Int'>
-    readonly jumpRequestId: FieldRef<"CrewMember", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * CrewMember findUnique
-   */
-  export type CrewMemberFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    /**
-     * Filter, which CrewMember to fetch.
-     */
-    where: CrewMemberWhereUniqueInput
-  }
-
-  /**
-   * CrewMember findUniqueOrThrow
-   */
-  export type CrewMemberFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    /**
-     * Filter, which CrewMember to fetch.
-     */
-    where: CrewMemberWhereUniqueInput
-  }
-
-  /**
-   * CrewMember findFirst
-   */
-  export type CrewMemberFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    /**
-     * Filter, which CrewMember to fetch.
-     */
-    where?: CrewMemberWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CrewMembers to fetch.
-     */
-    orderBy?: CrewMemberOrderByWithRelationInput | CrewMemberOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CrewMembers.
-     */
-    cursor?: CrewMemberWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CrewMembers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CrewMembers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CrewMembers.
-     */
-    distinct?: CrewMemberScalarFieldEnum | CrewMemberScalarFieldEnum[]
-  }
-
-  /**
-   * CrewMember findFirstOrThrow
-   */
-  export type CrewMemberFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    /**
-     * Filter, which CrewMember to fetch.
-     */
-    where?: CrewMemberWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CrewMembers to fetch.
-     */
-    orderBy?: CrewMemberOrderByWithRelationInput | CrewMemberOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for CrewMembers.
-     */
-    cursor?: CrewMemberWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CrewMembers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CrewMembers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of CrewMembers.
-     */
-    distinct?: CrewMemberScalarFieldEnum | CrewMemberScalarFieldEnum[]
-  }
-
-  /**
-   * CrewMember findMany
-   */
-  export type CrewMemberFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    /**
-     * Filter, which CrewMembers to fetch.
-     */
-    where?: CrewMemberWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of CrewMembers to fetch.
-     */
-    orderBy?: CrewMemberOrderByWithRelationInput | CrewMemberOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing CrewMembers.
-     */
-    cursor?: CrewMemberWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` CrewMembers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` CrewMembers.
-     */
-    skip?: number
-    distinct?: CrewMemberScalarFieldEnum | CrewMemberScalarFieldEnum[]
-  }
-
-  /**
-   * CrewMember create
-   */
-  export type CrewMemberCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    /**
-     * The data needed to create a CrewMember.
-     */
-    data: XOR<CrewMemberCreateInput, CrewMemberUncheckedCreateInput>
-  }
-
-  /**
-   * CrewMember createMany
-   */
-  export type CrewMemberCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many CrewMembers.
-     */
-    data: CrewMemberCreateManyInput | CrewMemberCreateManyInput[]
-  }
-
-  /**
-   * CrewMember createManyAndReturn
-   */
-  export type CrewMemberCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * The data used to create many CrewMembers.
-     */
-    data: CrewMemberCreateManyInput | CrewMemberCreateManyInput[]
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CrewMember update
-   */
-  export type CrewMemberUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    /**
-     * The data needed to update a CrewMember.
-     */
-    data: XOR<CrewMemberUpdateInput, CrewMemberUncheckedUpdateInput>
-    /**
-     * Choose, which CrewMember to update.
-     */
-    where: CrewMemberWhereUniqueInput
-  }
-
-  /**
-   * CrewMember updateMany
-   */
-  export type CrewMemberUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update CrewMembers.
-     */
-    data: XOR<CrewMemberUpdateManyMutationInput, CrewMemberUncheckedUpdateManyInput>
-    /**
-     * Filter which CrewMembers to update
-     */
-    where?: CrewMemberWhereInput
-    /**
-     * Limit how many CrewMembers to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * CrewMember updateManyAndReturn
-   */
-  export type CrewMemberUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * The data used to update CrewMembers.
-     */
-    data: XOR<CrewMemberUpdateManyMutationInput, CrewMemberUncheckedUpdateManyInput>
-    /**
-     * Filter which CrewMembers to update
-     */
-    where?: CrewMemberWhereInput
-    /**
-     * Limit how many CrewMembers to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * CrewMember upsert
-   */
-  export type CrewMemberUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    /**
-     * The filter to search for the CrewMember to update in case it exists.
-     */
-    where: CrewMemberWhereUniqueInput
-    /**
-     * In case the CrewMember found by the `where` argument doesn't exist, create a new CrewMember with this data.
-     */
-    create: XOR<CrewMemberCreateInput, CrewMemberUncheckedCreateInput>
-    /**
-     * In case the CrewMember was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CrewMemberUpdateInput, CrewMemberUncheckedUpdateInput>
-  }
-
-  /**
-   * CrewMember delete
-   */
-  export type CrewMemberDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
-    /**
-     * Filter which CrewMember to delete.
-     */
-    where: CrewMemberWhereUniqueInput
-  }
-
-  /**
-   * CrewMember deleteMany
-   */
-  export type CrewMemberDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which CrewMembers to delete
-     */
-    where?: CrewMemberWhereInput
-    /**
-     * Limit how many CrewMembers to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * CrewMember without action
-   */
-  export type CrewMemberDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the CrewMember
-     */
-    select?: CrewMemberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the CrewMember
-     */
-    omit?: CrewMemberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CrewMemberInclude<ExtArgs> | null
   }
 
 
@@ -3203,20 +1960,12 @@ export namespace Prisma {
     destinationYear: 'destinationYear',
     plutoniumCores: 'plutoniumCores',
     suppressParadoxCheck: 'suppressParadoxCheck',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    travelerName: 'travelerName',
+    travelerBirthYear: 'travelerBirthYear'
   };
 
   export type JumpRequestScalarFieldEnum = (typeof JumpRequestScalarFieldEnum)[keyof typeof JumpRequestScalarFieldEnum]
-
-
-  export const CrewMemberScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    birthYear: 'birthYear',
-    jumpRequestId: 'jumpRequestId'
-  };
-
-  export type CrewMemberScalarFieldEnum = (typeof CrewMemberScalarFieldEnum)[keyof typeof CrewMemberScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3280,7 +2029,8 @@ export namespace Prisma {
     plutoniumCores?: IntFilter<"JumpRequest"> | number
     suppressParadoxCheck?: BoolFilter<"JumpRequest"> | boolean
     createdAt?: DateTimeFilter<"JumpRequest"> | Date | string
-    crew?: CrewMemberListRelationFilter
+    travelerName?: StringFilter<"JumpRequest"> | string
+    travelerBirthYear?: IntFilter<"JumpRequest"> | number
   }
 
   export type JumpRequestOrderByWithRelationInput = {
@@ -3290,7 +2040,8 @@ export namespace Prisma {
     plutoniumCores?: SortOrder
     suppressParadoxCheck?: SortOrder
     createdAt?: SortOrder
-    crew?: CrewMemberOrderByRelationAggregateInput
+    travelerName?: SortOrder
+    travelerBirthYear?: SortOrder
   }
 
   export type JumpRequestWhereUniqueInput = Prisma.AtLeast<{
@@ -3303,7 +2054,8 @@ export namespace Prisma {
     plutoniumCores?: IntFilter<"JumpRequest"> | number
     suppressParadoxCheck?: BoolFilter<"JumpRequest"> | boolean
     createdAt?: DateTimeFilter<"JumpRequest"> | Date | string
-    crew?: CrewMemberListRelationFilter
+    travelerName?: StringFilter<"JumpRequest"> | string
+    travelerBirthYear?: IntFilter<"JumpRequest"> | number
   }, "id">
 
   export type JumpRequestOrderByWithAggregationInput = {
@@ -3313,6 +2065,8 @@ export namespace Prisma {
     plutoniumCores?: SortOrder
     suppressParadoxCheck?: SortOrder
     createdAt?: SortOrder
+    travelerName?: SortOrder
+    travelerBirthYear?: SortOrder
     _count?: JumpRequestCountOrderByAggregateInput
     _avg?: JumpRequestAvgOrderByAggregateInput
     _max?: JumpRequestMaxOrderByAggregateInput
@@ -3330,58 +2084,8 @@ export namespace Prisma {
     plutoniumCores?: IntWithAggregatesFilter<"JumpRequest"> | number
     suppressParadoxCheck?: BoolWithAggregatesFilter<"JumpRequest"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"JumpRequest"> | Date | string
-  }
-
-  export type CrewMemberWhereInput = {
-    AND?: CrewMemberWhereInput | CrewMemberWhereInput[]
-    OR?: CrewMemberWhereInput[]
-    NOT?: CrewMemberWhereInput | CrewMemberWhereInput[]
-    id?: StringFilter<"CrewMember"> | string
-    name?: StringFilter<"CrewMember"> | string
-    birthYear?: IntFilter<"CrewMember"> | number
-    jumpRequestId?: StringFilter<"CrewMember"> | string
-    jumpRequest?: XOR<JumpRequestScalarRelationFilter, JumpRequestWhereInput>
-  }
-
-  export type CrewMemberOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    birthYear?: SortOrder
-    jumpRequestId?: SortOrder
-    jumpRequest?: JumpRequestOrderByWithRelationInput
-  }
-
-  export type CrewMemberWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: CrewMemberWhereInput | CrewMemberWhereInput[]
-    OR?: CrewMemberWhereInput[]
-    NOT?: CrewMemberWhereInput | CrewMemberWhereInput[]
-    name?: StringFilter<"CrewMember"> | string
-    birthYear?: IntFilter<"CrewMember"> | number
-    jumpRequestId?: StringFilter<"CrewMember"> | string
-    jumpRequest?: XOR<JumpRequestScalarRelationFilter, JumpRequestWhereInput>
-  }, "id">
-
-  export type CrewMemberOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    birthYear?: SortOrder
-    jumpRequestId?: SortOrder
-    _count?: CrewMemberCountOrderByAggregateInput
-    _avg?: CrewMemberAvgOrderByAggregateInput
-    _max?: CrewMemberMaxOrderByAggregateInput
-    _min?: CrewMemberMinOrderByAggregateInput
-    _sum?: CrewMemberSumOrderByAggregateInput
-  }
-
-  export type CrewMemberScalarWhereWithAggregatesInput = {
-    AND?: CrewMemberScalarWhereWithAggregatesInput | CrewMemberScalarWhereWithAggregatesInput[]
-    OR?: CrewMemberScalarWhereWithAggregatesInput[]
-    NOT?: CrewMemberScalarWhereWithAggregatesInput | CrewMemberScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"CrewMember"> | string
-    name?: StringWithAggregatesFilter<"CrewMember"> | string
-    birthYear?: IntWithAggregatesFilter<"CrewMember"> | number
-    jumpRequestId?: StringWithAggregatesFilter<"CrewMember"> | string
+    travelerName?: StringWithAggregatesFilter<"JumpRequest"> | string
+    travelerBirthYear?: IntWithAggregatesFilter<"JumpRequest"> | number
   }
 
   export type JumpRequestCreateInput = {
@@ -3391,7 +2095,8 @@ export namespace Prisma {
     plutoniumCores: number
     suppressParadoxCheck?: boolean
     createdAt?: Date | string
-    crew?: CrewMemberCreateNestedManyWithoutJumpRequestInput
+    travelerName: string
+    travelerBirthYear: number
   }
 
   export type JumpRequestUncheckedCreateInput = {
@@ -3401,7 +2106,8 @@ export namespace Prisma {
     plutoniumCores: number
     suppressParadoxCheck?: boolean
     createdAt?: Date | string
-    crew?: CrewMemberUncheckedCreateNestedManyWithoutJumpRequestInput
+    travelerName: string
+    travelerBirthYear: number
   }
 
   export type JumpRequestUpdateInput = {
@@ -3411,7 +2117,8 @@ export namespace Prisma {
     plutoniumCores?: IntFieldUpdateOperationsInput | number
     suppressParadoxCheck?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    crew?: CrewMemberUpdateManyWithoutJumpRequestNestedInput
+    travelerName?: StringFieldUpdateOperationsInput | string
+    travelerBirthYear?: IntFieldUpdateOperationsInput | number
   }
 
   export type JumpRequestUncheckedUpdateInput = {
@@ -3421,7 +2128,8 @@ export namespace Prisma {
     plutoniumCores?: IntFieldUpdateOperationsInput | number
     suppressParadoxCheck?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    crew?: CrewMemberUncheckedUpdateManyWithoutJumpRequestNestedInput
+    travelerName?: StringFieldUpdateOperationsInput | string
+    travelerBirthYear?: IntFieldUpdateOperationsInput | number
   }
 
   export type JumpRequestCreateManyInput = {
@@ -3431,6 +2139,8 @@ export namespace Prisma {
     plutoniumCores: number
     suppressParadoxCheck?: boolean
     createdAt?: Date | string
+    travelerName: string
+    travelerBirthYear: number
   }
 
   export type JumpRequestUpdateManyMutationInput = {
@@ -3440,6 +2150,8 @@ export namespace Prisma {
     plutoniumCores?: IntFieldUpdateOperationsInput | number
     suppressParadoxCheck?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    travelerName?: StringFieldUpdateOperationsInput | string
+    travelerBirthYear?: IntFieldUpdateOperationsInput | number
   }
 
   export type JumpRequestUncheckedUpdateManyInput = {
@@ -3449,54 +2161,8 @@ export namespace Prisma {
     plutoniumCores?: IntFieldUpdateOperationsInput | number
     suppressParadoxCheck?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CrewMemberCreateInput = {
-    id?: string
-    name: string
-    birthYear: number
-    jumpRequest: JumpRequestCreateNestedOneWithoutCrewInput
-  }
-
-  export type CrewMemberUncheckedCreateInput = {
-    id?: string
-    name: string
-    birthYear: number
-    jumpRequestId: string
-  }
-
-  export type CrewMemberUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    birthYear?: IntFieldUpdateOperationsInput | number
-    jumpRequest?: JumpRequestUpdateOneRequiredWithoutCrewNestedInput
-  }
-
-  export type CrewMemberUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    birthYear?: IntFieldUpdateOperationsInput | number
-    jumpRequestId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type CrewMemberCreateManyInput = {
-    id?: string
-    name: string
-    birthYear: number
-    jumpRequestId: string
-  }
-
-  export type CrewMemberUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    birthYear?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type CrewMemberUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    birthYear?: IntFieldUpdateOperationsInput | number
-    jumpRequestId?: StringFieldUpdateOperationsInput | string
+    travelerName?: StringFieldUpdateOperationsInput | string
+    travelerBirthYear?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3540,16 +2206,6 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type CrewMemberListRelationFilter = {
-    every?: CrewMemberWhereInput
-    some?: CrewMemberWhereInput
-    none?: CrewMemberWhereInput
-  }
-
-  export type CrewMemberOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type JumpRequestCountOrderByAggregateInput = {
     id?: SortOrder
     mission?: SortOrder
@@ -3557,11 +2213,14 @@ export namespace Prisma {
     plutoniumCores?: SortOrder
     suppressParadoxCheck?: SortOrder
     createdAt?: SortOrder
+    travelerName?: SortOrder
+    travelerBirthYear?: SortOrder
   }
 
   export type JumpRequestAvgOrderByAggregateInput = {
     destinationYear?: SortOrder
     plutoniumCores?: SortOrder
+    travelerBirthYear?: SortOrder
   }
 
   export type JumpRequestMaxOrderByAggregateInput = {
@@ -3571,6 +2230,8 @@ export namespace Prisma {
     plutoniumCores?: SortOrder
     suppressParadoxCheck?: SortOrder
     createdAt?: SortOrder
+    travelerName?: SortOrder
+    travelerBirthYear?: SortOrder
   }
 
   export type JumpRequestMinOrderByAggregateInput = {
@@ -3580,11 +2241,14 @@ export namespace Prisma {
     plutoniumCores?: SortOrder
     suppressParadoxCheck?: SortOrder
     createdAt?: SortOrder
+    travelerName?: SortOrder
+    travelerBirthYear?: SortOrder
   }
 
   export type JumpRequestSumOrderByAggregateInput = {
     destinationYear?: SortOrder
     plutoniumCores?: SortOrder
+    travelerBirthYear?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3642,54 +2306,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type JumpRequestScalarRelationFilter = {
-    is?: JumpRequestWhereInput
-    isNot?: JumpRequestWhereInput
-  }
-
-  export type CrewMemberCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    birthYear?: SortOrder
-    jumpRequestId?: SortOrder
-  }
-
-  export type CrewMemberAvgOrderByAggregateInput = {
-    birthYear?: SortOrder
-  }
-
-  export type CrewMemberMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    birthYear?: SortOrder
-    jumpRequestId?: SortOrder
-  }
-
-  export type CrewMemberMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    birthYear?: SortOrder
-    jumpRequestId?: SortOrder
-  }
-
-  export type CrewMemberSumOrderByAggregateInput = {
-    birthYear?: SortOrder
-  }
-
-  export type CrewMemberCreateNestedManyWithoutJumpRequestInput = {
-    create?: XOR<CrewMemberCreateWithoutJumpRequestInput, CrewMemberUncheckedCreateWithoutJumpRequestInput> | CrewMemberCreateWithoutJumpRequestInput[] | CrewMemberUncheckedCreateWithoutJumpRequestInput[]
-    connectOrCreate?: CrewMemberCreateOrConnectWithoutJumpRequestInput | CrewMemberCreateOrConnectWithoutJumpRequestInput[]
-    createMany?: CrewMemberCreateManyJumpRequestInputEnvelope
-    connect?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-  }
-
-  export type CrewMemberUncheckedCreateNestedManyWithoutJumpRequestInput = {
-    create?: XOR<CrewMemberCreateWithoutJumpRequestInput, CrewMemberUncheckedCreateWithoutJumpRequestInput> | CrewMemberCreateWithoutJumpRequestInput[] | CrewMemberUncheckedCreateWithoutJumpRequestInput[]
-    connectOrCreate?: CrewMemberCreateOrConnectWithoutJumpRequestInput | CrewMemberCreateOrConnectWithoutJumpRequestInput[]
-    createMany?: CrewMemberCreateManyJumpRequestInputEnvelope
-    connect?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -3708,48 +2324,6 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
-  }
-
-  export type CrewMemberUpdateManyWithoutJumpRequestNestedInput = {
-    create?: XOR<CrewMemberCreateWithoutJumpRequestInput, CrewMemberUncheckedCreateWithoutJumpRequestInput> | CrewMemberCreateWithoutJumpRequestInput[] | CrewMemberUncheckedCreateWithoutJumpRequestInput[]
-    connectOrCreate?: CrewMemberCreateOrConnectWithoutJumpRequestInput | CrewMemberCreateOrConnectWithoutJumpRequestInput[]
-    upsert?: CrewMemberUpsertWithWhereUniqueWithoutJumpRequestInput | CrewMemberUpsertWithWhereUniqueWithoutJumpRequestInput[]
-    createMany?: CrewMemberCreateManyJumpRequestInputEnvelope
-    set?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-    disconnect?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-    delete?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-    connect?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-    update?: CrewMemberUpdateWithWhereUniqueWithoutJumpRequestInput | CrewMemberUpdateWithWhereUniqueWithoutJumpRequestInput[]
-    updateMany?: CrewMemberUpdateManyWithWhereWithoutJumpRequestInput | CrewMemberUpdateManyWithWhereWithoutJumpRequestInput[]
-    deleteMany?: CrewMemberScalarWhereInput | CrewMemberScalarWhereInput[]
-  }
-
-  export type CrewMemberUncheckedUpdateManyWithoutJumpRequestNestedInput = {
-    create?: XOR<CrewMemberCreateWithoutJumpRequestInput, CrewMemberUncheckedCreateWithoutJumpRequestInput> | CrewMemberCreateWithoutJumpRequestInput[] | CrewMemberUncheckedCreateWithoutJumpRequestInput[]
-    connectOrCreate?: CrewMemberCreateOrConnectWithoutJumpRequestInput | CrewMemberCreateOrConnectWithoutJumpRequestInput[]
-    upsert?: CrewMemberUpsertWithWhereUniqueWithoutJumpRequestInput | CrewMemberUpsertWithWhereUniqueWithoutJumpRequestInput[]
-    createMany?: CrewMemberCreateManyJumpRequestInputEnvelope
-    set?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-    disconnect?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-    delete?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-    connect?: CrewMemberWhereUniqueInput | CrewMemberWhereUniqueInput[]
-    update?: CrewMemberUpdateWithWhereUniqueWithoutJumpRequestInput | CrewMemberUpdateWithWhereUniqueWithoutJumpRequestInput[]
-    updateMany?: CrewMemberUpdateManyWithWhereWithoutJumpRequestInput | CrewMemberUpdateManyWithWhereWithoutJumpRequestInput[]
-    deleteMany?: CrewMemberScalarWhereInput | CrewMemberScalarWhereInput[]
-  }
-
-  export type JumpRequestCreateNestedOneWithoutCrewInput = {
-    create?: XOR<JumpRequestCreateWithoutCrewInput, JumpRequestUncheckedCreateWithoutCrewInput>
-    connectOrCreate?: JumpRequestCreateOrConnectWithoutCrewInput
-    connect?: JumpRequestWhereUniqueInput
-  }
-
-  export type JumpRequestUpdateOneRequiredWithoutCrewNestedInput = {
-    create?: XOR<JumpRequestCreateWithoutCrewInput, JumpRequestUncheckedCreateWithoutCrewInput>
-    connectOrCreate?: JumpRequestCreateOrConnectWithoutCrewInput
-    upsert?: JumpRequestUpsertWithoutCrewInput
-    connect?: JumpRequestWhereUniqueInput
-    update?: XOR<XOR<JumpRequestUpdateToOneWithWhereWithoutCrewInput, JumpRequestUpdateWithoutCrewInput>, JumpRequestUncheckedUpdateWithoutCrewInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3857,129 +2431,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type CrewMemberCreateWithoutJumpRequestInput = {
-    id?: string
-    name: string
-    birthYear: number
-  }
-
-  export type CrewMemberUncheckedCreateWithoutJumpRequestInput = {
-    id?: string
-    name: string
-    birthYear: number
-  }
-
-  export type CrewMemberCreateOrConnectWithoutJumpRequestInput = {
-    where: CrewMemberWhereUniqueInput
-    create: XOR<CrewMemberCreateWithoutJumpRequestInput, CrewMemberUncheckedCreateWithoutJumpRequestInput>
-  }
-
-  export type CrewMemberCreateManyJumpRequestInputEnvelope = {
-    data: CrewMemberCreateManyJumpRequestInput | CrewMemberCreateManyJumpRequestInput[]
-  }
-
-  export type CrewMemberUpsertWithWhereUniqueWithoutJumpRequestInput = {
-    where: CrewMemberWhereUniqueInput
-    update: XOR<CrewMemberUpdateWithoutJumpRequestInput, CrewMemberUncheckedUpdateWithoutJumpRequestInput>
-    create: XOR<CrewMemberCreateWithoutJumpRequestInput, CrewMemberUncheckedCreateWithoutJumpRequestInput>
-  }
-
-  export type CrewMemberUpdateWithWhereUniqueWithoutJumpRequestInput = {
-    where: CrewMemberWhereUniqueInput
-    data: XOR<CrewMemberUpdateWithoutJumpRequestInput, CrewMemberUncheckedUpdateWithoutJumpRequestInput>
-  }
-
-  export type CrewMemberUpdateManyWithWhereWithoutJumpRequestInput = {
-    where: CrewMemberScalarWhereInput
-    data: XOR<CrewMemberUpdateManyMutationInput, CrewMemberUncheckedUpdateManyWithoutJumpRequestInput>
-  }
-
-  export type CrewMemberScalarWhereInput = {
-    AND?: CrewMemberScalarWhereInput | CrewMemberScalarWhereInput[]
-    OR?: CrewMemberScalarWhereInput[]
-    NOT?: CrewMemberScalarWhereInput | CrewMemberScalarWhereInput[]
-    id?: StringFilter<"CrewMember"> | string
-    name?: StringFilter<"CrewMember"> | string
-    birthYear?: IntFilter<"CrewMember"> | number
-    jumpRequestId?: StringFilter<"CrewMember"> | string
-  }
-
-  export type JumpRequestCreateWithoutCrewInput = {
-    id?: string
-    mission: string
-    destinationYear: number
-    plutoniumCores: number
-    suppressParadoxCheck?: boolean
-    createdAt?: Date | string
-  }
-
-  export type JumpRequestUncheckedCreateWithoutCrewInput = {
-    id?: string
-    mission: string
-    destinationYear: number
-    plutoniumCores: number
-    suppressParadoxCheck?: boolean
-    createdAt?: Date | string
-  }
-
-  export type JumpRequestCreateOrConnectWithoutCrewInput = {
-    where: JumpRequestWhereUniqueInput
-    create: XOR<JumpRequestCreateWithoutCrewInput, JumpRequestUncheckedCreateWithoutCrewInput>
-  }
-
-  export type JumpRequestUpsertWithoutCrewInput = {
-    update: XOR<JumpRequestUpdateWithoutCrewInput, JumpRequestUncheckedUpdateWithoutCrewInput>
-    create: XOR<JumpRequestCreateWithoutCrewInput, JumpRequestUncheckedCreateWithoutCrewInput>
-    where?: JumpRequestWhereInput
-  }
-
-  export type JumpRequestUpdateToOneWithWhereWithoutCrewInput = {
-    where?: JumpRequestWhereInput
-    data: XOR<JumpRequestUpdateWithoutCrewInput, JumpRequestUncheckedUpdateWithoutCrewInput>
-  }
-
-  export type JumpRequestUpdateWithoutCrewInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    mission?: StringFieldUpdateOperationsInput | string
-    destinationYear?: IntFieldUpdateOperationsInput | number
-    plutoniumCores?: IntFieldUpdateOperationsInput | number
-    suppressParadoxCheck?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type JumpRequestUncheckedUpdateWithoutCrewInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    mission?: StringFieldUpdateOperationsInput | string
-    destinationYear?: IntFieldUpdateOperationsInput | number
-    plutoniumCores?: IntFieldUpdateOperationsInput | number
-    suppressParadoxCheck?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type CrewMemberCreateManyJumpRequestInput = {
-    id?: string
-    name: string
-    birthYear: number
-  }
-
-  export type CrewMemberUpdateWithoutJumpRequestInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    birthYear?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type CrewMemberUncheckedUpdateWithoutJumpRequestInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    birthYear?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type CrewMemberUncheckedUpdateManyWithoutJumpRequestInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    birthYear?: IntFieldUpdateOperationsInput | number
   }
 
 

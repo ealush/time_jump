@@ -9,19 +9,12 @@ datasource db {
 }
 
 model JumpRequest {
-  id                   String       @id @default(cuid())
+  id                   String   @id @default(cuid())
   mission              String
   destinationYear      Int
   plutoniumCores       Int
-  suppressParadoxCheck Boolean      @default(false)
-  createdAt            DateTime     @default(now())
-  crew                 CrewMember[]
-}
-
-model CrewMember {
-  id            String      @id @default(cuid())
-  name          String
-  birthYear     Int
-  jumpRequest   JumpRequest @relation(fields: [jumpRequestId], references: [id])
-  jumpRequestId String
+  suppressParadoxCheck Boolean  @default(false)
+  createdAt            DateTime @default(now())
+  travelerName         String
+  travelerBirthYear    Int
 }
