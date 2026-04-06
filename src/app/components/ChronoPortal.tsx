@@ -6,12 +6,9 @@ import styles from "./ChronoPortal.module.css";
 import StepOneMission from "./chrono-portal/StepOneMission";
 import StepTwoCalibration from "./chrono-portal/StepTwoCalibration";
 import StepThreeSuccess from "./chrono-portal/StepThreeSuccess";
-import {
-  INITIAL_CHRONO_FORM,
-  ChronoStep,
-  ChronosSchemaType,
-} from "./chrono-portal/types";
+import { ChronosSchemaType, ChronoStep } from "./chrono-portal/types";
 import { initiateJump } from "../actions/jumpAction";
+import { INITIAL_CHRONO_FORM } from "./chrono-portal/types";
 
 export default function ChronoPortal() {
   const [currentStep, setCurrentStep] = useState<ChronoStep>(1);
@@ -19,50 +16,20 @@ export default function ChronoPortal() {
     useState<ChronosSchemaType>(INITIAL_CHRONO_FORM);
   const [isSubmitting, startSubmitTransition] = useTransition();
 
-  function updateField(
-    key: keyof ChronosSchemaType,
-    value: string | boolean,
-  ) {
-    setFormData((prev) => ({
-      ...prev,
+  function updateField(key: keyof ChronosSchemaType, value: string | boolean) {
+    const nextFormData = {
+      ...formData,
       [key]: value,
-    }));
-  }
+    };
 
-  function updateCrewMember(
-    memberId: string,
-    field: "name" | "birthYear",
-    value: string,
-  ) {
-    setFormData((prev) => ({
-      ...prev,
-      crew: prev.crew.map((m) =>
-        m.id === memberId ? { ...m, [field]: value } : m,
-      ),
-    }));
-  }
-
-  function addCrewMember() {
-    setFormData((prev) => ({
-      ...prev,
-      crew: [
-        ...prev.crew,
-        { id: crypto.randomUUID(), name: "", birthYear: "" },
-      ],
-    }));
-  }
-
-  function removeCrewMember(memberId: string) {
-    setFormData((prev) => ({
-      ...prev,
-      crew: prev.crew.filter((m) => m.id !== memberId),
-    }));
+    setFormData(nextFormData);
   }
 
   async function handleInitiateJump() {
     startSubmitTransition(async function () {
       await initiateJump({
-        crew: formData.crew,
+        travelerName: formData.travelerName,
+        travelerBirthYear: formData.travelerBirthYear,
         mission: formData.mission,
         destinationYear: formData.destinationYear,
         plutoniumCores: formData.plutoniumCores,
@@ -87,9 +54,6 @@ export default function ChronoPortal() {
           <StepOneMission
             formData={formData}
             onChange={updateField}
-            onCrewChange={updateCrewMember}
-            onAddCrewMember={addCrewMember}
-            onRemoveCrewMember={removeCrewMember}
             onNext={() => {
               setCurrentStep(2);
             }}
@@ -115,7 +79,7 @@ export default function ChronoPortal() {
   );
 
   function handleReset() {
-    setFormData(INITIAL_CHRONO_FORM);
+    setFormData({} as ChronosSchemaType);
     setCurrentStep(1);
   }
 }

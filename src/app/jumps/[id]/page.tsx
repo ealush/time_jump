@@ -11,10 +11,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const jump = await prisma.jumpRequest.findUnique({
     where: { id },
-    include: { crew: true },
   });
   if (!jump) return { title: "Jump Not Found · ChronoTrips™ Temporal Transit Authority" };
-  const primaryName = jump.crew[0]?.name ?? "Unknown Traveler";
+  const primaryName = jump.travelerName || "Unknown Traveler";
   return {
     title: `${primaryName} → ${jump.destinationYear} · ChronoTrips™`,
     description: `Temporal displacement request filed by ${primaryName}. Destination epoch: ${jump.destinationYear}.`,
@@ -25,12 +24,11 @@ export default async function JumpDetailPage({ params }: Props) {
   const { id } = await params;
   const jump = await prisma.jumpRequest.findUnique({
     where: { id },
-    include: { crew: true },
   });
 
   if (!jump) notFound();
 
-  const isParadox = jump.crew.some((m) => m.birthYear >= jump.destinationYear);
+  const isParadox = jump.travelerBirthYear >= jump.destinationYear;
   const congestion = genYearCongestion(jump.destinationYear);
 
   const filed = new Date(jump.createdAt).toLocaleString("en-GB", {
@@ -59,8 +57,7 @@ export default async function JumpDetailPage({ params }: Props) {
             Dossier #{jump.id.slice(-8).toUpperCase()} · Logged {filed} UTC-Temporal
           </p>
           <h1>
-            {jump.crew[0]?.name ?? "Unknown Traveler"}
-            {jump.crew.length > 1 && ` +${jump.crew.length - 1} crew`}
+            {jump.travelerName || "Unknown Traveler"}
           </h1>
         </header>
 
@@ -68,7 +65,7 @@ export default async function JumpDetailPage({ params }: Props) {
         {isParadox && (
           <div className={styles.paradoxAlert}>
             ⚠ TEMPORAL PARADOX DETECTED — Target epoch ({jump.destinationYear})
-            predates or coincides with a crew member&apos;s origin year.
+            predates or coincides with the traveler&apos;s origin year.
             This filing has been flagged for review by the Bureau of Chronological
             Transit. Do not attempt displacement until cleared.
           </div>
@@ -83,13 +80,11 @@ export default async function JumpDetailPage({ params }: Props) {
           </div>
 
           <div className={styles.field}>
-            <span className={styles.fieldLabel}>Crew Manifest</span>
+            <span className={styles.fieldLabel}>Traveler Data</span>
             <ul className={styles.crewList}>
-              {jump.crew.map((member) => (
-                <li key={member.id}>
-                  {member.name} (born {member.birthYear})
-                </li>
-              ))}
+              <li>
+                {jump.travelerName} (born {jump.travelerBirthYear})
+              </li>
             </ul>
           </div>
 

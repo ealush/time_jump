@@ -1,13 +1,8 @@
 export type ChronoStep = 1 | 2 | 3;
 
-export type CrewMember = {
-  id: string;
-  name: string;
-  birthYear: string;
-};
-
 export type ChronosSchemaType = {
-  crew: CrewMember[];
+  travelerName: string;
+  travelerBirthYear: string;
   mission: string;
   destinationYear: string;
   plutoniumCores: string;
@@ -15,7 +10,8 @@ export type ChronosSchemaType = {
 };
 
 export const INITIAL_CHRONO_FORM: ChronosSchemaType = {
-  crew: [{ id: "crew-1", name: "", birthYear: "" }],
+  travelerName: "",
+  travelerBirthYear: "",
   mission: "",
   destinationYear: "",
   plutoniumCores: "",

@@ -1,10 +1,11 @@
 import styles from "../ChronoPortal.module.css";
 import { ReactNode } from "react";
+import { ChronosSchemaType } from "./types";
 
 type FieldControlProps = {
   label: ReactNode;
   input: ReactNode;
-  name: string;
+  name: keyof ChronosSchemaType;
 };
 
 export default function FieldControl({
@@ -18,7 +19,7 @@ export default function FieldControl({
         {label}
         <span className={styles.inputWrapper}>{input}</span>
       </label>
-      <p className={styles.fieldMessage} />
+      <p className={styles.fieldMessage}></p>
     </>
   );
 }

@@ -12,7 +12,6 @@ export const dynamic = "force-dynamic";
 
 export default async function JumpsPage() {
   const jumps = await prisma.jumpRequest.findMany({
-    include: { crew: true },
     orderBy: { createdAt: "desc" },
   });
 
@@ -43,15 +42,13 @@ export default async function JumpsPage() {
         )}
 
         {jumps.map(function (jump) {
-          const isParadox = jump.crew.some(
-            (m) => m.birthYear >= jump.destinationYear,
-          );
+          const isParadox = jump.travelerBirthYear >= jump.destinationYear;
           const date = new Date(jump.createdAt).toLocaleDateString("en-GB", {
             day: "2-digit",
             month: "short",
             year: "numeric",
           });
-          const primaryName = jump.crew[0]?.name ?? "Unknown Traveler";
+          const primaryName = jump.travelerName || "Unknown Traveler";
 
           return (
             <Link
@@ -64,7 +61,6 @@ export default async function JumpsPage() {
               </span>
               <span className={styles.cardName}>
                 {primaryName}
-                {jump.crew.length > 1 && ` +${jump.crew.length - 1} more`}
               </span>
               <span className={styles.cardYear}>→ {jump.destinationYear}</span>
               <p className={styles.cardMission}>{jump.mission}</p>

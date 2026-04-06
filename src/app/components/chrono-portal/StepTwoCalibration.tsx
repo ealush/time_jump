@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { ChronosSchemaType } from "./types";
 import { calculateQuantumFlux } from "@/app/utils";
 import styles from "../ChronoPortal.module.css";
 import FieldControl from "./FieldControl";
+import { ChronosSchemaType } from "./types";
 
 type StepTwoCalibrationProps = {
   formData: ChronosSchemaType;
@@ -50,6 +50,12 @@ export default function StepTwoCalibration({
         }
         name="destinationYear"
       />
+      {isCheckingTimeline && (
+        <div className={styles.scanningIndicator}>
+          <span className={styles.scanningText}>Scanning timeline...</span>
+          <div className={styles.scanningDot} />
+        </div>
+      )}
 
       <label className={styles.checkboxLabel}>
         <input
